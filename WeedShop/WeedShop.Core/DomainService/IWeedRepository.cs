@@ -6,5 +6,6 @@ namespace WeedShop.Core.DomainService
 {
     public interface IWeedRepository
     {
+
     }
 }
