@@ -6,8 +6,10 @@ using WeedShop.Core.Entity;
 
 namespace WeedShop.InfraStructure.SQL.Repositories
 {
-    class WeedRepository : IWeedRepository
+    public class WeedRepository : IWeedRepository
     {
+
+
         public Weed AddWeed(Weed weed)
         {
             throw new NotImplementedException();

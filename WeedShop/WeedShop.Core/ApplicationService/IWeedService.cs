@@ -11,7 +11,7 @@ namespace WeedShop.Core.DomainService
         Weed CreateWeed(Weed weed);
         Weed UpdateWeed(Weed weed);
         Weed DeleteWeed(Weed weed);
-        Weed GetWeed(Weed weed);
+        Weed GetWeed(int id);
 
         
 
