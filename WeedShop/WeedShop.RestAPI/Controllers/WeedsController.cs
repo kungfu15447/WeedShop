@@ -27,27 +27,35 @@ namespace WeedShop.RestAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Weed> Get(int id)
         {
-            return _weedServ.GetWeed(id);
+            return Ok(_weedServ.GetWeed(id));
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Weed weed)
+        public ActionResult<Weed> Post([FromBody] Weed weed)
         {
-            _weedServ.CreateWeed(weed);
+            return Ok(_weedServ.CreateWeed(weed));
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Weed weed)
+        public ActionResult<Weed> Put(int id, [FromBody] Weed weed)
         {
-            _weedServ.UpdateWeed(weed);
+            return Ok(_weedServ.UpdateWeed(weed));
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<Weed> Delete(int id)
         {
+            Weed weed = _weedServ.GetWeed(id);
+            if (weed == null)
+            {
+                return BadRequest("Could not find specific weed");
+            }else
+            {
+                return Ok(_weedServ.DeleteWeed(weed));
+            }
         }
     }
 }
