@@ -35,6 +35,7 @@ namespace WeedShop.RestAPI
             services.AddScoped<IWeedRepository, WeedRepository>();
             services.AddScoped<IWeedService, WeedService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             if (Environment.IsDevelopment())
             {
                 services.AddDbContext<WeedShopContext>(
