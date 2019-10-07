@@ -35,7 +35,7 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         public Weed ReadWeed(int id)
         {
             return _context.Weeds
-                .Include(c => c.Type)
+                .Include(w => w.Type)
                 .FirstOrDefault(w => w.Id == id);
         }
 
@@ -43,14 +43,22 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         {
             if (filter != null && filter.ItemsPrPage > 0 && filter.CurrentPage > 0)
             {
-
+                var filteredList = _context.Weeds
+                    .Include(w => w.Type)
+                    .Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
+                    .Take(filter.ItemsPrPage);
+                return filteredList.ToList();
             }
-            return new List<Weed>();
+            return _context.Weeds
+                .Include(w => w.Type).ToList();
         }
 
         public Weed UpdateWeed(Weed weed)
         {
-            throw new NotImplementedException();
+            _context.Attach(weed).State = EntityState.Modified;
+            _context.Entry(weed).Reference(c => c.Type).IsModified = true;
+            _context.SaveChanges();
+            return weed;
         }
     }
 }
