@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WeedShop.Core.DomainService
 {
-    interface IWeedRepository
+    public interface IWeedRepository
     {
     }
 }
