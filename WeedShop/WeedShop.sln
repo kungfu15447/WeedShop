@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeedShop.Core", "WeedShop.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeedShop.InfraStructure.SQL", "WeedShop.InfraStructure.SQL\WeedShop.InfraStructure.SQL.csproj", "{63222E2E-5692-4C4A-A04A-55ABF202E174}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeedShop.RestAPI", "WeedShop.RestAPI\WeedShop.RestAPI.csproj", "{B28CF63B-BA5F-4487-BE82-29027E4B8075}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{63222E2E-5692-4C4A-A04A-55ABF202E174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63222E2E-5692-4C4A-A04A-55ABF202E174}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63222E2E-5692-4C4A-A04A-55ABF202E174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B28CF63B-BA5F-4487-BE82-29027E4B8075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28CF63B-BA5F-4487-BE82-29027E4B8075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28CF63B-BA5F-4487-BE82-29027E4B8075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B28CF63B-BA5F-4487-BE82-29027E4B8075}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{28E2B0FF-027A-44ED-ABF1-40AFF980B555} = {35841B25-9C3A-4064-8F83-8364E6D65C21}
 		{18DD11E0-4645-41C4-886D-1AFC865BA05A} = {35841B25-9C3A-4064-8F83-8364E6D65C21}
 		{63222E2E-5692-4C4A-A04A-55ABF202E174} = {85C3B0C9-D42B-45F2-B149-58824FC4E5AF}
+		{B28CF63B-BA5F-4487-BE82-29027E4B8075} = {D0DBA1BF-E78D-4E60-B4E9-37BCBD09623D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A81B273B-0069-4F1B-91E5-6549F23B6A1D}
