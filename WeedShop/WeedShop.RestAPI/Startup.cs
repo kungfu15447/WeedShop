@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WeedShop.Core.ApplicationService.Implementation;
 using WeedShop.Core.DomainService;
+using WeedShop.InfraStructure.SQL;
 using WeedShop.InfraStructure.SQL.Repositories;
 
 namespace WeedShop.RestAPI
@@ -31,6 +33,9 @@ namespace WeedShop.RestAPI
             services.AddScoped<IWeedRepository, WeedRepository>();
             services.AddScoped<IWeedService, WeedService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDbContext<WeedShopContext>(
+                optionsAction: opt => opt.UseSqlite(
+                    connectionString: "Data Source = WeedShop.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

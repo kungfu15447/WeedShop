@@ -9,11 +9,11 @@ namespace WeedShop.InfraStructure.SQL.Repositories
     public class WeedRepository : IWeedRepository
     {
 
-        
+        private WeedShopContext _context;
 
         public WeedRepository(WeedShopContext context)
         {
-           // _context = context;
+           _context = context;
         }
 
         public Weed AddWeed(Weed weed)

@@ -9,6 +9,8 @@ using WeedShop.Core.Entity;
 
 namespace WeedShop.RestAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class WeedsController : ControllerBase
     {
         private IWeedService _weedServ;
