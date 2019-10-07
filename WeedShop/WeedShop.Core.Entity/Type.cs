@@ -4,7 +4,9 @@ using System.Text;
 
 namespace WeedShop.Core.Entity
 {
-    class Type
+    public class Type
     {
+        public int Id { get; set; }
+        public string TypeName { get; set; }
     }
 }
