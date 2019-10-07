@@ -34,7 +34,9 @@ namespace WeedShop.InfraStructure.SQL.Repositories
 
         public Weed ReadWeed(int id)
         {
-            return _context.Weeds.FirstOrDefault(w => w.Id == id);
+            return _context.Weeds
+                .Include(c => c.Type)
+                .FirstOrDefault(w => w.Id == id);
         }
 
         public IEnumerable<Weed> ReadWeeds(Filter filter)
