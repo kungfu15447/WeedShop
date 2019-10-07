@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WeedShop.Core.DomainService;
 using WeedShop.Core.Entity;
@@ -18,22 +20,30 @@ namespace WeedShop.InfraStructure.SQL.Repositories
 
         public Weed AddWeed(Weed weed)
         {
-            throw new NotImplementedException();
+            _context.Attach(weed).State = EntityState.Added;
+            _context.SaveChanges();
+            return weed;
         }
 
         public Weed DeleteWeed(Weed weed)
         {
-            throw new NotImplementedException();
+            _context.Remove(weed);
+            _context.SaveChanges();
+            return weed;
         }
 
         public Weed ReadWeed(int id)
         {
-            throw new NotImplementedException();
+            return _context.Weeds.FirstOrDefault(w => w.Id == id);
         }
 
         public IEnumerable<Weed> ReadWeeds(Filter filter)
         {
-            throw new NotImplementedException();
+            if (filter != null && filter.ItemsPrPage > 0 && filter.CurrentPage > 0)
+            {
+
+            }
+            return new List<Weed>();
         }
 
         public Weed UpdateWeed(Weed weed)
