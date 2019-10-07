@@ -25,7 +25,7 @@ namespace WeedShop.InfraStructure.SQL.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Weed> ReadWeeds()
+        public IEnumerable<Weed> ReadWeeds(Filter filter)
         {
             throw new NotImplementedException();
         }

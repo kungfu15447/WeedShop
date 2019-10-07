@@ -30,9 +30,9 @@ namespace WeedShop.Core.ApplicationService.Implementation
             return _WeedRepository.ReadWeed(id);
         }
 
-        public List<Weed> GetWeeds()
+        public List<Weed> GetWeeds(Filter filter)
         {
-            return _WeedRepository.ReadWeeds().ToList();
+            return _WeedRepository.ReadWeeds(filter).ToList();
         }
 
         public Weed UpdateWeed(Weed weed)

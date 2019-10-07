@@ -7,7 +7,7 @@ namespace WeedShop.Core.DomainService
 {
     public interface IWeedService
     {
-        List<Weed> GetWeeds();
+        List<Weed> GetWeeds(Filter filter);
         Weed CreateWeed(Weed weed);
         Weed UpdateWeed(Weed weed);
         Weed DeleteWeed(Weed weed);
