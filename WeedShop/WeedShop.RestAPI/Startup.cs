@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WeedShop.Core.ApplicationService.Implementation;
+using WeedShop.Core.DomainService;
+using WeedShop.InfraStructure.SQL.Repositories;
 
 namespace WeedShop.RestAPI
 {
@@ -25,6 +28,8 @@ namespace WeedShop.RestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IWeedRepository, WeedRepository>();
+            services.AddScoped<IWeedService, WeedService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

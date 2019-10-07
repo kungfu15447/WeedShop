@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WeedShop.Core.Entity\WeedShop.Core.Entity.csproj" />
+    <ProjectReference Include="..\WeedShop.Core\WeedShop.Core.csproj" />
+  </ItemGroup>
 
 </Project>
