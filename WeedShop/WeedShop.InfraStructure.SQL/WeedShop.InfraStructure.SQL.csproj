@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WeedShop.Core.Entity\WeedShop.Core.Entity.csproj" />
     <ProjectReference Include="..\WeedShop.Core\WeedShop.Core.csproj" />
   </ItemGroup>
