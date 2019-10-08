@@ -25,6 +25,11 @@ namespace WeedShop.InfraStructure.SQL.Repositories
             return weed;
         }
 
+        public int Count()
+        {
+            return _context.Weeds.Count();
+        }
+
         public Weed DeleteWeed(Weed weed)
         {
             _context.Remove(weed);

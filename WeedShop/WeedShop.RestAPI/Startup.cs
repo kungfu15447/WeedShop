@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using WeedShop.Core.ApplicationService;
 using WeedShop.Core.ApplicationService.Implementation;
 using WeedShop.Core.DomainService;
+using WeedShop.Core.ExceptionHandling;
 using WeedShop.InfraStructure.SQL;
 using WeedShop.InfraStructure.SQL.Repositories;
 using WeedShop.RestAPI.Initializer;
@@ -38,6 +39,7 @@ namespace WeedShop.RestAPI
             services.AddScoped<IWeedService, WeedService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IErrorFactory, ErrorFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(options =>
             {
