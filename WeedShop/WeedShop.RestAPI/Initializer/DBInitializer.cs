@@ -9,8 +9,11 @@ namespace WeedShop.RestAPI.Initializer
 {
     public class DBInitializer
     {
+    
         public static void Seed(WeedShopContext ctx) 
         {
+
+            // WEED SEED
             Core.Entity.Type type1 = new Core.Entity.Type
             {
                 TypeName = "Hybrid"
@@ -27,6 +30,8 @@ namespace WeedShop.RestAPI.Initializer
             type1 = ctx.Types.Add(type1).Entity;
             type2 = ctx.Types.Add(type2).Entity;
             type3 = ctx.Types.Add(type3).Entity;
+
+            
 
             Weed weed1 = new Weed
             {
@@ -89,6 +94,42 @@ namespace WeedShop.RestAPI.Initializer
             weed4 = ctx.Weeds.Add(weed4).Entity;
             weed5 = ctx.Weeds.Add(weed5).Entity;
             weed6 = ctx.Weeds.Add(weed6).Entity;
+
+            // ORDER SEED
+            List<Weed> weeds1 = new List<Weed>();
+            weeds1.Add(weed1);
+            List<Weed> weeds2 = new List<Weed>();
+            weeds2.Add(weed2);
+            List<Weed> weeds3 = new List<Weed>();
+            weeds3.Add(weed3);
+
+            Order order1 = new Order
+            {
+                OrderDate = DateTime.Now,
+                DeliveryDate = DateTime.Now,
+                WeedBought = weeds1,
+
+
+            };
+            Order order2 = new Order
+            {
+                OrderDate = DateTime.Now,
+                DeliveryDate = DateTime.Now,
+                WeedBought = weeds2,
+
+
+            };
+            Order order3 = new Order
+            {
+                OrderDate = DateTime.Now,
+                DeliveryDate = DateTime.Now,
+                WeedBought = weeds3,
+
+
+            };
+            order1 = ctx.Orders.Add(order1).Entity;
+            order2 = ctx.Orders.Add(order2).Entity;
+            order3 = ctx.Orders.Add(order3).Entity;
 
             ctx.SaveChanges();
 
