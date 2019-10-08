@@ -12,6 +12,7 @@ namespace WeedShop.Core.DomainService
         Weed AddWeed(Weed weed);
         Weed DeleteWeed(Weed weed);
         Weed UpdateWeed(Weed weed);
+        int Count();
 
     }
 }

@@ -57,7 +57,13 @@ namespace WeedShop.RestAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Weed> Put(int id, [FromBody] Weed weed)
         {
-            return Ok(_weedServ.UpdateWeed(weed));
+            if (id != weed.Id)
+            {
+                return BadRequest("Id's are not equal. Could not update");
+            }else
+            {
+                return Ok(_weedServ.UpdateWeed(weed));
+            }
         }
 
         // DELETE api/values/5
