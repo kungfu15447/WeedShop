@@ -7,7 +7,7 @@ namespace WeedShop.Core.ApplicationService
 {
     public interface IOrderService
     {
-        List<Order> ReadOrders();
+        List<Order> GetOrders();
         Order AddOrder(Order order);
         Order UpdateOrder(Order order);
         Order GetOrder(int id);

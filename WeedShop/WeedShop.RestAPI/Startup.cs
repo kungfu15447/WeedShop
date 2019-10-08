@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WeedShop.Core.ApplicationService;
 using WeedShop.Core.ApplicationService.Implementation;
 using WeedShop.Core.DomainService;
 using WeedShop.InfraStructure.SQL;
@@ -35,7 +36,19 @@ namespace WeedShop.RestAPI
         {
             services.AddScoped<IWeedRepository, WeedRepository>();
             services.AddScoped<IWeedService, WeedService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder
+                        //.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("http://localhost:64934").AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("http://db-weedshop-jwh-dk-easv.azurewebsites.net").AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
+
+            });
 
             if (Environment.IsDevelopment())
             {
@@ -54,7 +67,9 @@ namespace WeedShop.RestAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+
+            app.UseCors("AllowSpecificOrigin");
+
             if (env.IsDevelopment())
             {
                 using (var scope = app.ApplicationServices.CreateScope())

@@ -31,7 +31,7 @@ namespace WeedShop.Core.ApplicationService.Implementation
             return _orderRepo.ReadOrder(id);
         }
 
-        public List<Order> ReadOrders()
+        public List<Order> GetOrders()
         {
             return _orderRepo.ReadOrders().ToList();
         }
