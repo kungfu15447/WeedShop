@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using WeedShop.Core.ApplicationService;
 using WeedShop.Core.ApplicationService.Implementation;
 using WeedShop.Core.DomainService;
@@ -41,6 +42,11 @@ namespace WeedShop.RestAPI
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IErrorFactory, ErrorFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.MaxDepth = 3;
+            });
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",

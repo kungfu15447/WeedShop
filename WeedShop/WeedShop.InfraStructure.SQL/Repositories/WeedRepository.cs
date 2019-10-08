@@ -59,7 +59,10 @@ namespace WeedShop.InfraStructure.SQL.Repositories
                 return filteredList.ToList();
             }
             return _context.Weeds
-                .Include(w => w.Type).ToList();
+                .Include(w => w.Type)
+                .Include(w => w.OrderLines)
+                .ThenInclude(ol => ol.Order)
+                .ToList();
         }
 
         public Weed UpdateWeed(Weed weed)

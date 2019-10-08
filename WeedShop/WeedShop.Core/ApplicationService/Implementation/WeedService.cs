@@ -39,6 +39,10 @@ namespace WeedShop.Core.ApplicationService.Implementation
 
         public List<Weed> GetWeeds(Filter filter)
         {
+            if (filter == null)
+            {
+                return _WeedRepository.ReadWeeds(null).ToList();
+            }
             if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
             {
                 _errorFactory.Invalid("Current page or items per page must be equal or higher than zero");
