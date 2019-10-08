@@ -21,15 +21,18 @@ namespace WeedShop.InfraStructure.SQL
             modelBuilder.Entity<Weed>()
                 .HasOne(w => w.Type);
 
-            modelBuilder.Entity<Weed>()
-                .HasMany(w => w.OrderLines)
-                .WithOne(ol => ol.Weed)
-                .HasForeignKey(ol => ol.WeedId);
+            modelBuilder.Entity<OrderLine>()
+                .HasKey(ol => new { ol.WeedId, ol.OrderId });
 
-            modelBuilder.Entity<Order>()
-                .HasMany(o => o.OrderLines)
-                .WithOne(ol => ol.Order)
+            modelBuilder.Entity<OrderLine>()
+                .HasOne(ol => ol.Order)
+                .WithMany(o => o.OrderLines)
                 .HasForeignKey(ol => ol.OrderId);
+
+            modelBuilder.Entity<OrderLine>()
+                .HasOne(ol => ol.Weed)
+                .WithMany(p => p.OrderLines)
+                .HasForeignKey(ol => ol.WeedId);
         }
 
         public DbSet<Weed> Weeds { get; set; }

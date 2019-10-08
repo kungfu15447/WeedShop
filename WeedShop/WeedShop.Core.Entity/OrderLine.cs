@@ -6,7 +6,6 @@ namespace WeedShop.Core.Entity
 {
     public class OrderLine
     {
-        public int Id { get; set; }
         public int WeedId { get; set; }
         public Weed Weed{ get; set; }
         public int OrderId { get; set; }
