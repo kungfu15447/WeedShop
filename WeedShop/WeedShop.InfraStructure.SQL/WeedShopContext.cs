@@ -14,6 +14,23 @@ namespace WeedShop.InfraStructure.SQL
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Weed>()
+                .HasOne(w => w.Type);
+
+            modelBuilder.Entity<Weed>()
+                .HasMany(w => w.OrderLines)
+                .WithOne(ol => ol.Weed)
+                .HasForeignKey(ol => ol.WeedId);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.OrderLines)
+                .WithOne(ol => ol.Order)
+                .HasForeignKey(ol => ol.OrderId);
+        }
 
         public DbSet<Weed> Weeds { get; set; }
         public DbSet<Type> Types { get; set; }

@@ -35,7 +35,7 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         {
             return _context.Orders
                 .Include(o => o.WeedBought)
-                .FirstOrDefault(o => o.id == id);
+                .FirstOrDefault(o => o.Id == id);
         }
 
         public IEnumerable<Order> ReadOrders()

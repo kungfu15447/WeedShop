@@ -15,6 +15,7 @@ using WeedShop.Core.ApplicationService.Implementation;
 using WeedShop.Core.DomainService;
 using WeedShop.InfraStructure.SQL;
 using WeedShop.InfraStructure.SQL.Repositories;
+using WeedShop.RestAPI.Initializer;
 
 namespace WeedShop.RestAPI
 {
@@ -53,19 +54,28 @@ namespace WeedShop.RestAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var context = scope.ServiceProvider
-                    .GetRequiredService<WeedShopContext>();
-                context.Database.EnsureCreated();
-                //DBInitializer.Seed(context);
-            }
+            
             if (env.IsDevelopment())
             {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var context = scope.ServiceProvider
+                        .GetRequiredService<WeedShopContext>();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                    DBInitializer.Seed(context);
+                }
                 app.UseDeveloperExceptionPage();
             }
             else
             {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var context = scope.ServiceProvider
+                        .GetRequiredService<WeedShopContext>();
+                    context.Database.EnsureCreated();
+                    DBInitializer.Seed(context);
+                }
                 app.UseHsts();
             }
 

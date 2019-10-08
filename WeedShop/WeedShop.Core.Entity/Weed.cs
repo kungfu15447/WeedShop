@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WeedShop.Core.Entity
 {
@@ -11,5 +12,6 @@ namespace WeedShop.Core.Entity
         public double Price { get; set; }
         public string Description { get; set; }
         public int Rating { get; set; }
+        public List<OrderLine> OrderLines { get; set; }
     }
 }
