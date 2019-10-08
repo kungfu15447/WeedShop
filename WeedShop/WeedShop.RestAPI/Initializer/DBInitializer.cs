@@ -90,6 +90,8 @@ namespace WeedShop.RestAPI.Initializer
             weed5 = ctx.Weeds.Add(weed5).Entity;
             weed6 = ctx.Weeds.Add(weed6).Entity;
 
+            ctx.SaveChanges();
+
         }
     }
 }
