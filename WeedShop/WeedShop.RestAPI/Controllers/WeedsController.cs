@@ -35,9 +35,15 @@ namespace WeedShop.RestAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Weed> Get(int id)
         {
-            return Ok(_weedServ.GetWeed(id))
-                
-                ;
+            var weed = _weedServ.GetWeed(id);
+            if (weed == null)
+            {
+                return BadRequest("Could not find the specific weed");
+            }
+            else
+            {
+                return Ok(Get(id));
+            }
         }
 
         // POST api/values
