@@ -31,7 +31,7 @@ namespace WeedShop.RestAPI.Initializer
             type2 = ctx.Types.Add(type2).Entity;
             type3 = ctx.Types.Add(type3).Entity;
 
-            
+
 
             Weed weed1 = new Weed
             {
@@ -40,7 +40,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 600,
                 Price = 2650.50,
                 Description = "This is some good pineapple",
-                Rating = 3
+                Rating = 3,
+                OrderLines = new List<OrderLine>()
             };
             Weed weed2 = new Weed
             {
@@ -49,7 +50,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 20,
                 Price = 3000,
                 Description = "Apperently Cheese",
-                Rating = 5
+                Rating = 5,
+                OrderLines = new List<OrderLine>()
             };
             Weed weed3 = new Weed
             {
@@ -58,7 +60,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 275,
                 Price = 4500,
                 Description = "Wtf is this name",
-                Rating = 2
+                Rating = 2,
+                OrderLines = new List<OrderLine>()
             };
             Weed weed4 = new Weed
             {
@@ -67,7 +70,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 321,
                 Price = 550,
                 Description = "Disney approves",
-                Rating = 4
+                Rating = 4,
+                OrderLines = new List<OrderLine>()
             };
             Weed weed5 = new Weed
             {
@@ -76,7 +80,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 1000,
                 Price = 45000,
                 Description = "THUNDER FUCK THUNDER FUCK THUNDER FUCK THUNDER FUCK",
-                Rating = 5
+                Rating = 5,
+                OrderLines = new List<OrderLine>()
             };
             Weed weed6 = new Weed
             {
@@ -85,7 +90,8 @@ namespace WeedShop.RestAPI.Initializer
                 Weight = 2,
                 Price = 200,
                 Description = "TIMBEEEERRRR MR WORLD WIDE AAWWW YEEAAAG",
-                Rating = 1
+                Rating = 1,
+                OrderLines = new List<OrderLine>()
             };
 
             weed1 = ctx.Weeds.Add(weed1).Entity;
@@ -96,26 +102,38 @@ namespace WeedShop.RestAPI.Initializer
             weed6 = ctx.Weeds.Add(weed6).Entity;
 
             // ORDER SEED
-            List<Weed> weeds1 = new List<Weed>();
-            weeds1.Add(weed1);
-            List<Weed> weeds2 = new List<Weed>();
-            weeds2.Add(weed2);
-            List<Weed> weeds3 = new List<Weed>();
-            weeds3.Add(weed3);
+            OrderLine ol1 = new OrderLine
+            {
+                Weed = weed1
+            };
+            OrderLine ol2 = new OrderLine
+            {
+                Weed = weed2
+            };
+            OrderLine ol3 = new OrderLine
+            {
+                Weed = weed3
+            };
+            OrderLine ol4 = new OrderLine
+            {
+                Weed = weed4
+            };
+            OrderLine ol5 = new OrderLine
+            {
+                Weed = weed3
+            };
 
             Order order1 = new Order
             {
                 OrderDate = DateTime.Now,
                 DeliveryDate = DateTime.Now,
-                WeedBought = weeds1,
-
-
+                OrderLines = new List<OrderLine>()
             };
             Order order2 = new Order
             {
                 OrderDate = DateTime.Now,
                 DeliveryDate = DateTime.Now,
-                WeedBought = weeds2,
+                OrderLines = new List<OrderLine>()
 
 
             };
@@ -123,10 +141,17 @@ namespace WeedShop.RestAPI.Initializer
             {
                 OrderDate = DateTime.Now,
                 DeliveryDate = DateTime.Now,
-                WeedBought = weeds3,
+                OrderLines = new List<OrderLine>()
 
 
             };
+
+            order1.OrderLines.Add(ol1);
+            order1.OrderLines.Add(ol2);
+            order2.OrderLines.Add(ol3);
+            order2.OrderLines.Add(ol4);
+            order3.OrderLines.Add(ol5);
+
             order1 = ctx.Orders.Add(order1).Entity;
             order2 = ctx.Orders.Add(order2).Entity;
             order3 = ctx.Orders.Add(order3).Entity;

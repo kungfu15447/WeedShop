@@ -22,28 +22,43 @@ namespace WeedShop.RestAPI.Controllers
         [HttpGet]
         public ActionResult<List<Weed>> Get([FromQuery] Filter filter)
         {
-            if (filter.ItemsPrPage > 0 && filter.CurrentPage > 0)
+            try
             {
-                return Ok(_weedServ.GetWeeds(filter));
-            }else
+                if (filter.ItemsPrPage > 0 && filter.CurrentPage > 0)
+                {
+                    return Ok(_weedServ.GetWeeds(filter));
+                }
+                else
+                {
+                    return Ok(_weedServ.GetWeeds(null));
+                }
+            }catch(Exception e)
             {
-                return Ok(_weedServ.GetWeeds(null));
+                return BadRequest(e.Message);
             }
+            
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Weed> Get(int id)
         {
-            var weed = _weedServ.GetWeed(id);
-            if (weed == null)
+            try
             {
-                return BadRequest("Could not find the specific weed");
-            }
-            else
+                var weed = _weedServ.GetWeed(id);
+                if (weed == null)
+                {
+                    return BadRequest("Could not find the specific weed");
+                }
+                else
+                {
+                    return Ok(weed);
+                }
+            }catch(Exception e)
             {
-                return Ok(weed);
+                return BadRequest(e.Message);
             }
+            
         }
 
         // POST api/values

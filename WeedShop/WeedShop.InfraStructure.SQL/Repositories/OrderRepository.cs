@@ -34,20 +34,23 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         public Order ReadOrder(int id)
         {
             return _context.Orders
-                .Include(o => o.WeedBought)
+                .Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Weed)
                 .FirstOrDefault(o => o.Id == id);
         }
 
         public IEnumerable<Order> ReadOrders()
         {
             return _context.Orders
-                .Include(w => w.WeedBought).ToList();
+                .Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Weed)
+                .ToList();
         }
 
         public Order UpdateOrder(Order order)
         {
             _context.Attach(order).State = EntityState.Modified;
-            _context.Entry(order).Reference(o => o.WeedBought).IsModified = true;
+            _context.Entry(order).Reference(o => o.OrderLines).IsModified = true;
             _context.SaveChanges();
             return order;
         }

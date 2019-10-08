@@ -30,6 +30,10 @@ namespace WeedShop.Core.ApplicationService.Implementation
 
         public Weed GetWeed(int id)
         {
+            if (id <= 0)
+            {
+                _errorFactory.Invalid("id must be higher than 0");
+            }
             return _WeedRepository.ReadWeed(id);
         }
 

@@ -9,7 +9,6 @@ namespace WeedShop.Core.Entity
         public int Id{ get; set; }
         public DateTime OrderDate{ get; set; }
         public DateTime DeliveryDate { get; set; }
-        public List<Weed> WeedBought{ get; set; }
         public List<OrderLine> OrderLines { get; set; }
     }
 }

@@ -41,6 +41,8 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         {
             return _context.Weeds
                 .Include(w => w.Type)
+                .Include(w => w.OrderLines)
+                .ThenInclude(ol => ol.Order)
                 .FirstOrDefault(w => w.Id == id);
         }
 
@@ -50,6 +52,8 @@ namespace WeedShop.InfraStructure.SQL.Repositories
             {
                 var filteredList = _context.Weeds
                     .Include(w => w.Type)
+                    .Include(w => w.OrderLines)
+                    .ThenInclude(ol => ol.Order)
                     .Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
                     .Take(filter.ItemsPrPage);
                 return filteredList.ToList();
