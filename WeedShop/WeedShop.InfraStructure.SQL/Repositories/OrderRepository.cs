@@ -51,6 +51,13 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         {
             _context.Attach(order).State = EntityState.Modified;
             _context.Entry(order).Reference(o => o.OrderLines).IsModified = true;
+            var orderLines = new List<OrderLine>(order.OrderLines ?? new List<OrderLine>());
+            _context.OrderLines.RemoveRange(
+                _context.OrderLines.Where(ol => ol.OrderId == order.Id));
+            foreach (var item in orderLines)
+            {
+                _context.Entry(item).State = EntityState.Added;
+            }
             _context.SaveChanges();
             return order;
         }

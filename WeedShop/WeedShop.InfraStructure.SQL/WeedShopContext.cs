@@ -38,6 +38,7 @@ namespace WeedShop.InfraStructure.SQL
         public DbSet<Weed> Weeds { get; set; }
         public DbSet<Type> Types { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLine> OrderLines { get; set; }
 
 
     }
