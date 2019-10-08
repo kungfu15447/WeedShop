@@ -42,7 +42,7 @@ namespace WeedShop.RestAPI.Controllers
             }
             else
             {
-                return Ok(Get(id));
+                return Ok(weed);
             }
         }
 
