@@ -50,7 +50,6 @@ namespace WeedShop.InfraStructure.SQL.Repositories
         public Order UpdateOrder(Order order)
         {
             _context.Attach(order).State = EntityState.Modified;
-            _context.Entry(order).Reference(o => o.OrderLines).IsModified = true;
             var orderLines = new List<OrderLine>(order.OrderLines ?? new List<OrderLine>());
             _context.OrderLines.RemoveRange(
                 _context.OrderLines.Where(ol => ol.OrderId == order.Id));

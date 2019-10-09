@@ -96,8 +96,12 @@ namespace WeedShop.RestAPI
                 {
                     var context = scope.ServiceProvider
                         .GetRequiredService<WeedShopContext>();
-                    context.Database.EnsureCreated();
-                    DBInitializer.Seed(context);
+                    if (!context.Weeds.Any())
+                    {
+                        context.Database.EnsureCreated();
+                        DBInitializer.Seed(context);
+                    }
+                    
                 }
                 app.UseHsts();
             }
