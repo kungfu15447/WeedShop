@@ -65,7 +65,15 @@ namespace WeedShop.RestAPI.Controllers
         [HttpPost]
         public ActionResult<Weed> Post([FromBody] Weed weed)
         {
-            return Ok(_weedServ.CreateWeed(weed));
+            try
+            {
+                return Ok(_weedServ.CreateWeed(weed));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         // PUT api/values/5

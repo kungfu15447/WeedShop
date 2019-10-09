@@ -20,7 +20,8 @@ namespace WeedShop.Core.ApplicationService.Implementation
         }
         public Weed CreateWeed(Weed weed)
         {
-           return _WeedRepository.AddWeed(weed);
+            validateWeed(weed);
+            return _WeedRepository.AddWeed(weed);
         }
 
         public Weed DeleteWeed(Weed weed)
@@ -56,7 +57,19 @@ namespace WeedShop.Core.ApplicationService.Implementation
 
         public Weed UpdateWeed(Weed weed)
         {
+            validateWeed(weed);
             return _WeedRepository.UpdateWeed(weed);
+        }
+        private void validateWeed(Weed weed)
+        {
+            if (weed.Id < 0 || weed.Id > 0)
+            {
+                _errorFactory.Invalid("You cant manually set the ID of the product");
+            }
+            if (weed.Type == null || weed.Type.Id <= 0)
+            {
+                _errorFactory.Invalid("A weed that is being added must include a type");
+            }
         }
     }
 }
