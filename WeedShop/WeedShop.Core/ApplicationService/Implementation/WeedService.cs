@@ -70,6 +70,10 @@ namespace WeedShop.Core.ApplicationService.Implementation
             {
                 _errorFactory.Invalid("A weed that is being added must include a type");
             }
+            if(weed.Rating <= 0 || weed.Rating >= 6)
+            {
+                _errorFactory.Invalid("You can only give a rating between 1 and 5");
+            }
         }
     }
 }
