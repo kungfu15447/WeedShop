@@ -47,7 +47,7 @@ namespace WeedShop.Core.ApplicationService.Implementation
             {
                 _errorFactory.Invalid("Current page or items per page must be equal or higher than zero");
             }
-            if ((filter.CurrentPage - 1 * filter.ItemsPrPage) >= _WeedRepository.Count())
+            if (((filter.CurrentPage - 1) * filter.ItemsPrPage) >= _WeedRepository.Count())
             {
                 _errorFactory.Invalid("Index out of bounds. Current page is too high");
             }
