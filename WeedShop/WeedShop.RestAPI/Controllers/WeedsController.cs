@@ -80,12 +80,20 @@ namespace WeedShop.RestAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Weed> Put(int id, [FromBody] Weed weed)
         {
-            if (id != weed.Id)
+            try
             {
-                return BadRequest("Id's are not equal. Could not update");
-            }else
+                if (id != weed.Id)
+                {
+                    return BadRequest("Id's are not equal. Could not update");
+                }
+                else
+                {
+                    return Ok(_weedServ.UpdateWeed(weed));
+                }
+            }
+            catch(Exception e)
             {
-                return Ok(_weedServ.UpdateWeed(weed));
+                return BadRequest(e.Message);
             }
         }
 
