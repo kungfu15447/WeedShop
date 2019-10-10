@@ -55,7 +55,6 @@ namespace WeedShop.RestAPI
                         .WithOrigins("http://localhost:64934").AllowAnyHeader().AllowAnyMethod()
                         .WithOrigins("http://db-weedshop-jwh-dk-easv.azurewebsites.net").AllowAnyHeader().AllowAnyMethod()
                         .WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod());
-
             });
 
             if (Environment.IsDevelopment())
