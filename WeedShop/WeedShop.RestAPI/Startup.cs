@@ -51,10 +51,10 @@ namespace WeedShop.RestAPI
             {
             options.AddPolicy("AllowSpecificOrigin",
                 builder => builder
-                    .AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-                        //.WithOrigins("http://localhost:64934").AllowAnyHeader().AllowAnyMethod()
-                        //.WithOrigins("http://db-weedshop-jwh-dk-easv.azurewebsites.net").AllowAnyHeader().AllowAnyMethod()
-                        //.WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod());
+                    //.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                        .WithOrigins("http://localhost:64934").AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("https://db-weedshop-jwh-dk-easv.azurewebsites.net").AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod());
             });
 
             if (Environment.IsDevelopment())
